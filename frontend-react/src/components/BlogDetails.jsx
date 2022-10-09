@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 
+import ReactMarkdown from 'react-markdown';
+
 const BlogDetails = () => {
   const [blog, setBlog] = useState(null);
   const [blogLoaded, setBlogLoaded] = useState(false);
@@ -45,7 +47,10 @@ const BlogDetails = () => {
         alt=""
         className="mb-4"
       />
+      <hr />
       <h5>{blogLoaded && blog.attributes.description}</h5>
+      <hr />
+      <ReactMarkdown>{blogLoaded && blog.attributes.content}</ReactMarkdown>
     </Container>
   );
 };
