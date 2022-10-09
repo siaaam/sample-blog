@@ -1,12 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Blogs from './components/Blogs';
-
+import Blogs from './pages/Blogs';
 import Navigation from './components/Navigation';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import BlogDetails from './components/BlogDetails';
+import Home from './pages/Home';
+import BlogDetails from './pages/BlogDetails';
+import AddBlog from './pages/AddBlog';
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
         <Route path="/" index element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogDetails />} />
+        <Route path="/add" element={<AddBlog />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { BlogContext } from '../context/BlogContex';
 
-import BlogCard from './BlogCard';
+import BlogCard from '../components/BlogCard';
 import Container from 'react-bootstrap/esm/Container';
 
 const Blogs = () => {

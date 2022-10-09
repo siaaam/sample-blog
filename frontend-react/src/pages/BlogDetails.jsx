@@ -22,7 +22,6 @@ const BlogDetails = () => {
         `http://localhost:1337/api/blogs/${id}?populate=*`
       );
       const data = res.data.data;
-      //   console.log(data.attributes.author.data.attributes.username);
       setBlog(data);
       setBlogLoaded(true);
     } catch (err) {
@@ -33,10 +32,10 @@ const BlogDetails = () => {
   console.log(blog);
   return (
     <Container>
-      <h1 className="mt-4">{blogLoaded && blog.attributes.title}</h1>
+      <h1 className="mt-4">{blogLoaded && blog?.attributes?.title}</h1>
       <p>
         created by:
-        {blogLoaded && blog.attributes.author.data.attributes.username}
+        {blogLoaded && blog?.attributes?.author?.data?.attributes?.username}
       </p>
       <img
         src={
@@ -48,9 +47,11 @@ const BlogDetails = () => {
         className="mb-4"
       />
       <hr />
-      <h5>{blogLoaded && blog.attributes.description}</h5>
+      <h5>{blogLoaded && blog?.attributes?.description}</h5>
       <hr />
-      <ReactMarkdown>{blogLoaded && blog.attributes.content}</ReactMarkdown>
+      <ReactMarkdown>
+        {blogLoaded ? blog?.attributes?.content : ''}
+      </ReactMarkdown>
     </Container>
   );
 };

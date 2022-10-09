@@ -22,9 +22,26 @@ export const BlogProvider = ({ children }) => {
     }
   };
 
+  const addBlog = async (data) => {
+    try {
+      const res = await axios.post('http://localhost:1337/api/blogs', {
+        data: {
+          ...data,
+        },
+      });
+
+      console.log(res.data);
+
+      setBlogs([...blogs, res.data]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const value = {
     blogs,
     blogsLoaded,
+    addBlog,
   };
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
 };

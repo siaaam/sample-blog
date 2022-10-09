@@ -19,6 +19,9 @@ const Navigation = () => {
           <Nav.Link as={NavLink} to="/blogs">
             Blogs
           </Nav.Link>
+          <Nav.Link as={NavLink} to="/add">
+            Add Blog
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
