@@ -5,6 +5,7 @@ export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
+  const [blogsLoaded, setBlogsLoaded] = useState(false);
 
   useEffect(() => {
     getBlogs();
@@ -15,6 +16,7 @@ export const BlogProvider = ({ children }) => {
       const res = await axios.get('http://localhost:1337/api/blogs?populate=*');
       const data = res.data.data;
       setBlogs(data);
+      setBlogsLoaded(true);
     } catch (err) {
       console.log(err);
     }
@@ -22,6 +24,7 @@ export const BlogProvider = ({ children }) => {
 
   const value = {
     blogs,
+    blogsLoaded,
   };
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
 };
