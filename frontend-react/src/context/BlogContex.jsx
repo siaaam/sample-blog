@@ -24,11 +24,12 @@ export const BlogProvider = ({ children }) => {
     }
   };
 
-  const addBlog = async (data) => {
+  const addBlog = async (blog) => {
     try {
       const res = await axios.post('http://localhost:1337/api/blogs', {
         data: {
-          ...data,
+          ...blog,
+          author: 1,
         },
       });
 
@@ -41,10 +42,21 @@ export const BlogProvider = ({ children }) => {
     }
   };
 
+  const deleteBlog = async (id) => {
+    try {
+      await axios.delete(`http://localhost:1337/api/blogs/${id}`);
+      const blogsAfterDelete = blogs.filter((blog) => blog.id !== id);
+      setBlogs(blogsAfterDelete);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const value = {
     blogs,
     blogsLoaded,
     addBlog,
+    deleteBlog,
   };
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
 };

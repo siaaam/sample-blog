@@ -1,11 +1,13 @@
-import React from 'react';
+import { useContext } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 import { useNavigate } from 'react-router-dom';
+import { BlogContext } from '../context/BlogContex';
 
 const BlogCard = ({ blogs, blogsLoaded }) => {
+  const { deleteBlog } = useContext(BlogContext);
   const navigate = useNavigate();
 
   console.log(blogs);
@@ -29,9 +31,17 @@ const BlogCard = ({ blogs, blogsLoaded }) => {
               <Button
                 variant="primary"
                 size="sm"
+                className="me-2"
                 onClick={() => navigate(`/blogs/${blog.id}`)}
               >
                 Read More
+              </Button>
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => deleteBlog(blog.id)}
+              >
+                delete
               </Button>
             </Card.Body>
           </Card>
