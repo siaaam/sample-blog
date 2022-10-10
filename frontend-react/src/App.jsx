@@ -9,7 +9,7 @@ import AddBlog from './pages/AddBlog';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Navigation />
       <Routes>
         <Route path="/" index element={<Home />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path="/blogs/:id" element={<BlogDetails />} />
         <Route path="/add" element={<AddBlog />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 

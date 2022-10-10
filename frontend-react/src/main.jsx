@@ -4,10 +4,14 @@ import App from './App';
 import { BlogProvider } from './context/BlogContex';
 import './index.css';
 
+import { BrowserRouter } from 'react-router-dom';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BlogProvider>
-      <App />
-    </BlogProvider>
+    <BrowserRouter>
+      <BlogProvider>
+        <App />
+      </BlogProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

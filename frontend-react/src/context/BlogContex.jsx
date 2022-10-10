@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState, createContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const [blogsLoaded, setBlogsLoaded] = useState(false);
 
@@ -32,7 +34,8 @@ export const BlogProvider = ({ children }) => {
 
       console.log(res.data);
 
-      setBlogs([...blogs, res.data]);
+      setBlogs([...blogs, res.data.data]);
+      navigate('/blogs');
     } catch (err) {
       console.log(err);
     }

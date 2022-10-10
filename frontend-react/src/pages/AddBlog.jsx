@@ -9,7 +9,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useContext } from 'react';
 import { BlogContext } from '../context/BlogContex';
-import { useNavigate } from 'react-router-dom';
 
 const schema = yup
   .object({
@@ -19,7 +18,6 @@ const schema = yup
   .required();
 
 const AddBlog = () => {
-  const navigate = useNavigate();
   const { addBlog } = useContext(BlogContext);
 
   const {
@@ -31,7 +29,6 @@ const AddBlog = () => {
   });
   const onSubmit = (data) => {
     addBlog(data);
-    navigate('/blogs');
   };
 
   return (
